@@ -14,12 +14,14 @@
                 <?= $this->session->flashdata('notif'); ?>
                 <?= form_open('auth',['method'=>'POST', 'class'=>'user']); ?>
                   <div class="form-group">
-                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                    <input type="email" class="form-control form-control-user" name="email"  aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                    <?= form_error('email','<small class="text-danger pl-3">','</small>'); ?>
                   </div>
                   <div class="form-group">
-                    <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                    <input type="password" class="form-control form-control-user" name="password" placeholder="Password">
+                    <?= form_error('password','<small class="text-danger pl-3">','</small>'); ?>
                   </div>
-                  <button type="submit" href="index.html" class="btn btn-primary btn-user btn-block">
+                  <button type="submit" class="btn btn-primary btn-user btn-block">
                     Login
                   </button>
                 <?= form_close(); ?>  
