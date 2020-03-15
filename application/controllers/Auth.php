@@ -4,12 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Auth extends CI_Controller {
     
-    public function __construct()
-    {
-        parent::__construct();
-        $this->load->library('form_validation');
-    }
-
     public function index()
     {
         // set rule
@@ -47,8 +41,15 @@ class Auth extends CI_Controller {
                         'id_role' => $user['id_role'] 
                     ];
                     // jika login berhasil
-                    $this->session->set_userdata($data);
-                    redirect('user');
+                    
+                    if($this->session->userdata('id_role') == 1){
+                        $this->session->set_userdata($data);
+                        redirect('admin');
+                    } else {
+                        $this->session->set_userdata($data);
+                        redirect('user');
+                    }    
+                        
                 } else {
                     $this->session->set_flashdata('notif','<div class="alert alert-danger" role="alert">
                     Wrong Password !
@@ -118,6 +119,10 @@ class Auth extends CI_Controller {
         Succes, your account has been logout!
         </div>');
         redirect('auth');
+    }
+
+    public function blocked(){
+        echo "access forbidden";
     }
 
 }

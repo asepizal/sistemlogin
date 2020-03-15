@@ -1,5 +1,5 @@
  <!-- Footer -->
- <footer class="sticky-footer bg-white">
+      <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright &copy; My Website <?= date('Y') ?></span>
@@ -47,6 +47,32 @@
 
   <!-- Custom scripts for all pages-->
   <script src="<?= base_url(); ?>assets/js/sb-admin-2.min.js"></script>
+
+  <script>
+    $('.form-check-input').on('click',function(){
+      const id_role = $(this).data('role');
+      const id_menu = $(this).data('menu');
+
+      $.ajax({
+        url: "<?= base_url('admin/changeaccess')?>",
+        type: 'post',
+        data:{
+          id_role : id_role,
+          id_menu : id_menu
+        },
+        success: function(){
+          document.location.href = "<?= base_url('admin/roleAccess/') ?>"+ id_role;
+        }
+        
+
+      })
+       
+
+
+
+    })
+  
+  </script>
 
 </body>
 
