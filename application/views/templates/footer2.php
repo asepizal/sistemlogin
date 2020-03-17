@@ -49,6 +49,12 @@
   <script src="<?= base_url(); ?>assets/js/sb-admin-2.min.js"></script>
 
   <script>
+    $('.custom-file-input').on('change', function(){
+      let filename = $(this).val().split('\\').pop();
+      $(this).next('.custom-file-label').addClass("selected").html(filename)
+    });
+
+
     $('.form-check-input').on('click',function(){
       const id_role = $(this).data('role');
       const id_menu = $(this).data('menu');

@@ -4,6 +4,12 @@
 <!-- Page Heading -->
 <h1 class="h3 mb-4 text-gray-800">My Profile</h1>
 
+<div class="row">
+  <div class="col-md-6">
+    <?= $this->session->flashdata('notif') ?>
+  </div>
+</div>
+
 <div class="card" style="width: 300px">
   <img src="<?= base_url().'assets/img/profile/'.$user['image']; ?>" alt="" class="card-img-top">
   <div class="card-body">
